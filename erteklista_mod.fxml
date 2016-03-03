@@ -14,17 +14,7 @@
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
-        <Menu mnemonicParsing="false" text="Felhasználói fiók">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Bezárás" />
-            <MenuItem mnemonicParsing="false" text="Kijelentkezés" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-          </items>
-        </Menu>
+        <Menu fx:id="ctrlKilepes" mnemonicParsing="false" text="Kilépés" />
       </menus>
     </MenuBar>
     <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="region" stylesheets="@../alkfejl.css" VBox.vgrow="ALWAYS">
@@ -67,6 +57,6 @@
     </AnchorPane>
   </children>
   <stylesheets>
-    <URL value="@BasicApplication.css" />
+    <URL value="@../alkfejl-master/BasicApplication.css" />
   </stylesheets>
 </VBox>

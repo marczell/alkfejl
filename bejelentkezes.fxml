@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu fx:id="ctrlKilepes" mnemonicParsing="false" text="Kilépés" />
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="region" stylesheets="@../alkfejl.css" VBox.vgrow="ALWAYS">
+      <children>
+            <Label layoutX="23.0" layoutY="14.0" prefHeight="48.0" prefWidth="472.0" text="KÖZBESZERZÉSI SZERZŐDÉSNYILVÁNTARTÓR RENDSZER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="349.0" layoutY="338.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" styleClass="buttonbase" stylesheets="@../alkfejl.css" text="Bejelentkezés" textAlignment="CENTER" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="300.0">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="381.0" layoutY="128.0" text="Hibaüzenetekhez" />
+            <PasswordField layoutX="315.0" layoutY="247.0" AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="235.0" />
+            <TextField layoutX="363.0" layoutY="181.0" AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="175.0" />
+            <Label layoutX="262.0" layoutY="185.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Felhasználónév" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="180.0" />
+            <Label layoutX="262.0" layoutY="251.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Jelszó" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="240.0" />
+      </children>
+    </AnchorPane>
+  </children>
+  <stylesheets>
+    <URL value="@BasicApplication.css" />
+  </stylesheets>
+</VBox>
