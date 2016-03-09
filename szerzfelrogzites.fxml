@@ -65,6 +65,7 @@
                   <Font name="Verdana" size="14.0" />
                </font>
             </Button>
+            <Label fx:id="Hibauzenet" layoutX="526.0" layoutY="556.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Hibaüzenethez" AnchorPane.leftAnchor="520.0" AnchorPane.topAnchor="560.0" />
       </children>
     </AnchorPane>
   </children>

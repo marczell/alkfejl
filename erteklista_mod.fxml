@@ -53,6 +53,8 @@
             <ChoiceBox fx:id="ErtekLista2" layoutX="231.0" layoutY="347.0" prefWidth="200.0" AnchorPane.leftAnchor="161.0" AnchorPane.topAnchor="345.0" />
             <ChoiceBox fx:id="OsszesErtek" layoutX="172.0" layoutY="356.0" prefWidth="200.0" AnchorPane.leftAnchor="520.0" AnchorPane.topAnchor="345.0" />
             <Line endX="650.0" layoutX="102.0" layoutY="312.0" startX="-50.0" styleClass="shape" AnchorPane.topAnchor="530.0" />
+            <Label fx:id="Hibauzenet1" layoutX="550.0" layoutY="267.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Hibaüzenethez" AnchorPane.leftAnchor="550.0" />
+            <Label fx:id="Hibauzenet2" layoutX="562.0" layoutY="497.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Hibaüzenethez" AnchorPane.leftAnchor="550.0" />
       </children>
     </AnchorPane>
   </children>

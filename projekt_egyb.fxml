@@ -46,6 +46,7 @@
                   <Font name="Verdana" size="14.0" />
                </font>
             </Button>
+            <Label fx:id="Hibaüzenet" layoutX="600.0" layoutY="88.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Hibaüzenethez" AnchorPane.leftAnchor="550.0" AnchorPane.topAnchor="80.0" />
       </children>
     </AnchorPane>
   </children>
