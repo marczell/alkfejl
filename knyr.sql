@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Hoszt: 127.0.0.1
--- Létrehozás ideje: 2016. Feb 29. 20:56
--- Szerver verzió: 5.6.17
--- PHP verzió: 5.5.12
+-- Gép: 127.0.0.1
+-- Létrehozás ideje: 2016. Már 09. 16:08
+-- Kiszolgáló verziója: 5.7.9
+-- PHP verzió: 5.6.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Adatbázis: `knyr`
@@ -26,11 +26,13 @@ SET time_zone = "+00:00";
 -- Tábla szerkezet ehhez a táblához `cpvkodok`
 --
 
+DROP TABLE IF EXISTS `cpvkodok`;
 CREATE TABLE IF NOT EXISTS `cpvkodok` (
   `cpvid` int(11) NOT NULL AUTO_INCREMENT,
   `cpvkod` char(150) NOT NULL,
+  `lathato` tinyint(1) NOT NULL,
   PRIMARY KEY (`cpvid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -38,11 +40,13 @@ CREATE TABLE IF NOT EXISTS `cpvkodok` (
 -- Tábla szerkezet ehhez a táblához `kozbeszerzesieljarasfajtai`
 --
 
+DROP TABLE IF EXISTS `kozbeszerzesieljarasfajtai`;
 CREATE TABLE IF NOT EXISTS `kozbeszerzesieljarasfajtai` (
   `kejid` int(11) NOT NULL AUTO_INCREMENT,
   `kozbeszerzesieljarasfajtai` char(150) NOT NULL,
+  `lathato` tinyint(1) NOT NULL,
   PRIMARY KEY (`kejid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -50,11 +54,13 @@ CREATE TABLE IF NOT EXISTS `kozbeszerzesieljarasfajtai` (
 -- Tábla szerkezet ehhez a táblához `projektek`
 --
 
+DROP TABLE IF EXISTS `projektek`;
 CREATE TABLE IF NOT EXISTS `projektek` (
   `projektid` int(11) NOT NULL AUTO_INCREMENT,
   `projekt` char(150) NOT NULL,
+  `lathato` tinyint(1) NOT NULL,
   PRIMARY KEY (`projektid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -62,6 +68,7 @@ CREATE TABLE IF NOT EXISTS `projektek` (
 -- Tábla szerkezet ehhez a táblához `szerzodes`
 --
 
+DROP TABLE IF EXISTS `szerzodes`;
 CREATE TABLE IF NOT EXISTS `szerzodes` (
   `sorszam` int(11) NOT NULL AUTO_INCREMENT,
   `szerzodesneve` char(100) NOT NULL,
@@ -80,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `szerzodes` (
   KEY `cpvkod` (`cpvkod`),
   KEY `kozbeszerzésieljarasfajta` (`kozbeszerzésieljarasfajta`),
   KEY `szerzodesfajtaja` (`szerzodesfajtaja`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -88,11 +95,13 @@ CREATE TABLE IF NOT EXISTS `szerzodes` (
 -- Tábla szerkezet ehhez a táblához `szerzodesfajtai`
 --
 
+DROP TABLE IF EXISTS `szerzodesfajtai`;
 CREATE TABLE IF NOT EXISTS `szerzodesfajtai` (
   `szerzodesfajtaid` int(11) NOT NULL AUTO_INCREMENT,
   `szerzodesfajta` char(150) NOT NULL,
+  `lathato` tinyint(1) NOT NULL,
   PRIMARY KEY (`szerzodesfajtaid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -100,6 +109,7 @@ CREATE TABLE IF NOT EXISTS `szerzodesfajtai` (
 -- Tábla szerkezet ehhez a táblához `szerzodo_fel`
 --
 
+DROP TABLE IF EXISTS `szerzodo_fel`;
 CREATE TABLE IF NOT EXISTS `szerzodo_fel` (
   `szfid` int(11) NOT NULL AUTO_INCREMENT,
   `szerzodofel` char(100) NOT NULL,
@@ -116,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `szerzodo_fel` (
   `kapcsolattarto-tel` char(25) NOT NULL,
   `kapcsolattarto-email` char(50) NOT NULL,
   PRIMARY KEY (`szfid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -124,6 +134,7 @@ CREATE TABLE IF NOT EXISTS `szerzodo_fel` (
 -- Tábla szerkezet ehhez a táblához `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `NEV` varchar(50) DEFAULT NULL,
   `JELSZO` varchar(50) DEFAULT NULL,
@@ -146,11 +157,11 @@ INSERT INTO `user` (`NEV`, `JELSZO`, `SZERKESZTHET`, `ADMINE`) VALUES
 -- Megkötések a táblához `szerzodes`
 --
 ALTER TABLE `szerzodes`
-  ADD CONSTRAINT `szerzodes_ibfk_5` FOREIGN KEY (`szerzodesfajtaja`) REFERENCES `szerzodesfajtai` (`szerzodesfajtaid`),
   ADD CONSTRAINT `szerzodes_ibfk_1` FOREIGN KEY (`szerzodofel`) REFERENCES `szerzodo_fel` (`szfid`),
   ADD CONSTRAINT `szerzodes_ibfk_2` FOREIGN KEY (`projekt`) REFERENCES `projektek` (`projektid`),
   ADD CONSTRAINT `szerzodes_ibfk_3` FOREIGN KEY (`kozbeszerzésieljarasfajta`) REFERENCES `kozbeszerzesieljarasfajtai` (`kejid`),
-  ADD CONSTRAINT `szerzodes_ibfk_4` FOREIGN KEY (`cpvkod`) REFERENCES `cpvkodok` (`cpvid`);
+  ADD CONSTRAINT `szerzodes_ibfk_4` FOREIGN KEY (`cpvkod`) REFERENCES `cpvkodok` (`cpvid`),
+  ADD CONSTRAINT `szerzodes_ibfk_5` FOREIGN KEY (`szerzodesfajtaja`) REFERENCES `szerzodesfajtai` (`szerzodesfajtaid`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
