@@ -49,10 +49,53 @@ public class FomenuController implements Initializable {
     private void szerzodoFelRogziteseAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) CtrlSzerzfel.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("szerzfelrogzites.fxml"));
-
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
+    @FXML
+    private void szerzodesRogziteseAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) CtrlSzerzfel.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("szerzrogzites.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void cpvEgybeszamitasAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) CtrlSzerzfel.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("CPV_egyb.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void projektEgybenszamitasAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) CtrlSzerzfel.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("projekt_egyb.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void keresesAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) CtrlSzerzfel.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("kereses.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void erteklistakAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) CtrlSzerzfel.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("erteklista_mod.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }    
 }
