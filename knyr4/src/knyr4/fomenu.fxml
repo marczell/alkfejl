@@ -26,44 +26,52 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="region" stylesheets="@../alkfejl.css" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="region" VBox.vgrow="ALWAYS">
       <children>
             <Label layoutX="23.0" layoutY="14.0" prefHeight="48.0" prefWidth="164.0" text="KNYR RENDSZER">
                <font>
                   <Font size="18.0" />
                </font>
+               <styleClass>
+                  <String fx:value="textinputcontrol" />
+                  <String fx:value="textinputcontrol" />
+               </styleClass>
             </Label>
-            <Button fx:id="CtrlSzerzfel" alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="122.0" mnemonicParsing="false" onAction="#szerzodoFelRogziteseAction" prefHeight="30.0" prefWidth="200.0" styleClass="buttonbase" stylesheets="@../alkfejl.css" text="Szerződő fél rögzítése" textAlignment="CENTER" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="120.0">
+            <Button fx:id="CtrlSzerzfel" alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="122.0" mnemonicParsing="false" onAction="#szerzodoFelRogziteseAction" prefHeight="30.0" prefWidth="200.0" text="Szerződő fél rögzítése" textAlignment="CENTER" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="120.0">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="buttonbase" />
+                  <String fx:value="buttonbase" />
+               </styleClass>
+            </Button>
+            <Button fx:id="CtrlSzerz" layoutX="79.0" layoutY="180.0" mnemonicParsing="false" onAction="#szerzodesRogziteseAction" prefHeight="30.0" prefWidth="200.0" styleClass="buttonbase" text="Szerződés rögzítése" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="180.0">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="CtrlSzerz" layoutX="79.0" layoutY="180.0" mnemonicParsing="false" onAction="#szerzodesRogziteseAction" prefHeight="30.0" prefWidth="200.0" styleClass="buttonbase" stylesheets="@../alkfejl.css" text="Szerződés rögzítése" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="180.0">
+            <Button fx:id="CtrlCpv" layoutX="79.0" layoutY="240.0" mnemonicParsing="false" onAction="#cpvEgybeszamitasAction" prefHeight="30.0" prefWidth="200.0" styleClass="buttonbase" text="CPV egybeszámítás" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="240.0">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="CtrlCpv" layoutX="79.0" layoutY="240.0" mnemonicParsing="false" onAction="#cpvEgybeszamitasAction" prefHeight="30.0" prefWidth="200.0" styleClass="buttonbase" stylesheets="@../alkfejl.css" text="CPV egybeszámítás" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="240.0">
+            <Button fx:id="CtrlProjekt" layoutX="79.0" layoutY="304.0" mnemonicParsing="false" onAction="#projektEgybenszamitasAction" prefHeight="30.0" prefWidth="200.0" styleClass="buttonbase" text="Projekt egybeszámítás" textAlignment="CENTER" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="300.0">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="CtrlProjekt" layoutX="79.0" layoutY="304.0" mnemonicParsing="false" onAction="#projektEgybenszamitasAction" prefHeight="30.0" prefWidth="200.0" styleClass="buttonbase" stylesheets="@../alkfejl.css" text="Projekt egybeszámítás" textAlignment="CENTER" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="300.0">
+            <Button fx:id="CtrlKeres" layoutX="77.0" layoutY="367.0" mnemonicParsing="false" onAction="#keresesAction" prefHeight="30.0" prefWidth="200.0" styleClass="buttonbase" text="Keresés" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="360.0">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="CtrlKeres" layoutX="77.0" layoutY="367.0" mnemonicParsing="false" onAction="#keresesAction" prefHeight="30.0" prefWidth="200.0" styleClass="buttonbase" stylesheets="@../alkfejl.css" text="Keresés" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="360.0">
+            <Button fx:id="CtrlErtek" layoutX="75.0" layoutY="427.0" mnemonicParsing="false" onAction="#erteklistakAction" prefHeight="30.0" prefWidth="200.0" styleClass="buttonbase" text="Értéklisták" textAlignment="CENTER" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="420.0">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="CtrlErtek" layoutX="75.0" layoutY="427.0" mnemonicParsing="false" onAction="#erteklistakAction" prefHeight="30.0" prefWidth="200.0" styleClass="buttonbase" stylesheets="@../alkfejl.css" text="Értéklisták" textAlignment="CENTER" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="420.0">
-               <font>
-                  <Font name="Verdana" size="14.0" />
-               </font>
-            </Button>
-            <TextArea layoutX="356.0" layoutY="126.0" prefHeight="330.0" prefWidth="330.0" text="Üdvözöljük a Közbeszerzési Szerződésnyilvántartó Rendszerben!&#10;Válasszon a menüpontok közül!" wrapText="true" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="120.0">
+            <TextArea layoutX="356.0" layoutY="126.0" prefHeight="330.0" prefWidth="330.0" styleClass="textinputcontrol" text="Üdvözöljük a Közbeszerzési Szerződésnyilvántartó Rendszerben!&#10;Válasszon a menüpontok közül!" wrapText="true" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="120.0">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
