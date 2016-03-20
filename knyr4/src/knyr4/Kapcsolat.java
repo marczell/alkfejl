@@ -79,5 +79,16 @@ public class Kapcsolat {
         System.out.println("lekérdezés");
 
     }
+    public ResultSet adatbazisReport(String sql) throws SQLException { //metódus sql selecthez
+        createConnection();
 
+        Statement stmt = conn.createStatement();
+//            stmt.execute();
+        System.out.println(sql);
+        //stmt.executeUpdate(sql);
+           ResultSet rs = stmt.executeQuery(sql);
+           System.out.println("lekérdezés");
+           return rs;
+        
+    }
 }
