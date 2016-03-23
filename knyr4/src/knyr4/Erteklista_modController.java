@@ -24,6 +24,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -48,6 +49,8 @@ public class Erteklista_modController implements Initializable {
     private ChoiceBox<?> ErtekLista2;
     @FXML
     private ChoiceBox<?> OsszesErtek;
+    @FXML
+    private Label uzenet;
     
     private Kapcsolat kapcsolat = new Kapcsolat();
     
@@ -93,7 +96,7 @@ public class Erteklista_modController implements Initializable {
                     list2.add(s);
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(SzerzfelrogzitesController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Erteklista_modController.class.getName()).log(Level.SEVERE, null, ex);
                 uzenet.setText("Hiba az értékkeresés során!");// kell a felületre egy hibaüzenet label
             } finally {
                 kapcsolat.closeConnection();
@@ -109,7 +112,7 @@ public class Erteklista_modController implements Initializable {
                     list2.add(s);
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(SzerzfelrogzitesController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Erteklista_modController.class.getName()).log(Level.SEVERE, null, ex);
                 uzenet.setText("Hiba az értékkeresés során!");// kell a felületre egy hibaüzenet label
             } finally {
                 kapcsolat.closeConnection();
@@ -125,7 +128,7 @@ public class Erteklista_modController implements Initializable {
                     list2.add(s);
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(SzerzfelrogzitesController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Erteklista_modController.class.getName()).log(Level.SEVERE, null, ex);
                 uzenet.setText("Hiba az értékkeresés során!");// kell a felületre egy hibaüzenet label
             } finally {
                 kapcsolat.closeConnection();
@@ -141,7 +144,7 @@ public class Erteklista_modController implements Initializable {
                     list2.add(s);
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(SzerzfelrogzitesController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Erteklista_modController.class.getName()).log(Level.SEVERE, null, ex);
                 uzenet.setText("Hiba az értékkeresés során!");// kell a felületre egy hibaüzenet label
             } finally {
                 kapcsolat.closeConnection();
@@ -161,7 +164,7 @@ public class Erteklista_modController implements Initializable {
                 kapcsolat.adatbazisbaInsertalas(sql);
                 uzenet.setText("Sikeres mentése a " + kivalasztottErtek.toString());
             } catch (SQLException ex) {
-                Logger.getLogger(SzerzfelrogzitesController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Erteklista_modController.class.getName()).log(Level.SEVERE, null, ex);
                 uzenet.setText("Hiba a mentés során!");
             } finally {
                 kapcsolat.closeConnection();
@@ -190,7 +193,7 @@ public class Erteklista_modController implements Initializable {
                 kapcsolat.adatbazisbaInsertalas(sql);
                 uzenet.setText("Sikeres mentése a " + UjErtek.getText());
             } catch (SQLException ex) {
-                Logger.getLogger(SzerzfelrogzitesController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Erteklista_modController.class.getName()).log(Level.SEVERE, null, ex);
                 uzenet.setText("Hiba a mentés során!");
             } finally {
                 kapcsolat.closeConnection();

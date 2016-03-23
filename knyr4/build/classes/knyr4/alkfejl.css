@@ -1,13 +1,13 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 2016.03.15., 16:20:36
-    Author     : Marcell
-*/
+.buttonbase {
+	-fx-text-alignment:center; -fx-font-family:verdana; -fx-background-color:tan; -fx-font-size:14px; -fx-border-color:sienna; -fx-border-style:outset; -fx-border-width:2px;
+	}
+.region {
+    -fx-background-color: levander; -fx-border-color:mediumslateblue; -fx-border-style:groove; -fx-border-width:medium;
+}
+.textinputcontrol {
+	-fx-font:verdana; -fx-font-size:14px;
+}
 
-
-
-
+.shape{
+	-fx-stroke:mediumslateblue; -fx-stroke-width:2px;
+}
