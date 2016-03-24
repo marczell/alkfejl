@@ -155,7 +155,7 @@ public class Erteklista_modController implements Initializable {
         OsszesErtek.getItems().clear();
         OsszesErtek.setItems(obList2);
         }
-    
+    @FXML
      private void ertekTorlesAction(ActionEvent event) {
         //a érték lathato paraméterének false-ra állítása
         Object kivalasztottErtek = OsszesErtek.getSelectionModel().getSelectedItem();

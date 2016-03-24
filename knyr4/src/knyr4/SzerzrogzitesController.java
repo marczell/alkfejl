@@ -5,6 +5,7 @@
  */
 package knyr4;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,12 +18,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -30,6 +35,9 @@ import javafx.scene.control.TextField;
  * @author Marcell
  */
 public class SzerzrogzitesController implements Initializable {
+    
+    @FXML
+    private TextField SzerzNevSzerz;
     @FXML
     private Button CtrlSzerzMentes;
     @FXML
@@ -56,14 +64,23 @@ public class SzerzrogzitesController implements Initializable {
     private Label uzenet;
     
     private Kapcsolat kapcsolat = new Kapcsolat();
+    List<String> listKej = new ArrayList<>();
+    List<String> listKejId = new ArrayList<>();
+    List<String> listSzerzF = new ArrayList<>();
+    List<String> listSzerzFId = new ArrayList<>();
+    List<String> listCpv = new ArrayList<>();
+    List<String> listCpvId = new ArrayList<>();
+    List<String> listProjekt = new ArrayList<>();
+    List<String> listProjektId = new ArrayList<>();
+    List<String> listSzerzFel = new ArrayList<>();
+    List<String> listSzerzFelId = new ArrayList<>();
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        List<String> listKej = new ArrayList<>();
-        List<String> listKejId = new ArrayList<>();
+        
         String sql1 = "SELECT KOZBESZERZESIELJARASFAJTAI, KEJID FROM KOZBESZERZESIELJARASFAJTAI WHERE LATHATO=TRUE";//meg kell nézni , hogy az oszlopot valóban lathatónak hívják e
             try {
                 ResultSet rs = kapcsolat.adatbazisReport(sql1); 
@@ -82,8 +99,6 @@ public class SzerzrogzitesController implements Initializable {
             } finally {
                 kapcsolat.closeConnection();
             }
-        List<String> listSzerzF = new ArrayList<>();
-        List<String> listSzerzFId = new ArrayList<>();
         String sql2 = "SELECT SZERZODESFAJTA, SZERZODESFAJTAID FROM SZERZODESFAJTAI WHERE LATHATO=TRUE";//meg kell nézni , hogy az oszlopot valóban lathatónak hívják e
             try {
                 ResultSet rs = kapcsolat.adatbazisReport(sql2); 
@@ -102,8 +117,6 @@ public class SzerzrogzitesController implements Initializable {
             } finally {
                 kapcsolat.closeConnection();
             }
-        List<String> listCpv = new ArrayList<>();
-        List<String> listCpvId = new ArrayList<>();
         String sql3 = "SELECT CPVKOD, CPVID FROM CPVKODOK WHERE LATHATO=TRUE";//meg kell nézni , hogy az oszlopot valóban lathatónak hívják e
             try {
                 ResultSet rs = kapcsolat.adatbazisReport(sql3); 
@@ -122,8 +135,6 @@ public class SzerzrogzitesController implements Initializable {
             } finally {
                 kapcsolat.closeConnection();
             }
-        List<String> listProjekt = new ArrayList<>();
-        List<String> listProjektId = new ArrayList<>();
         String sql4 = "SELECT PROJEKT, PROJEKTID FROM PROJEKTEK WHERE LATHATO=TRUE";//meg kell nézni , hogy az oszlopot valóban lathatónak hívják e
             try {
                 ResultSet rs = kapcsolat.adatbazisReport(sql4); 
@@ -142,8 +153,6 @@ public class SzerzrogzitesController implements Initializable {
             } finally {
                 kapcsolat.closeConnection();
             }
-        List<String> listSzerzFel = new ArrayList<>();
-        List<String> listSzerzFelId = new ArrayList<>();
         String sql5 = "SELECT SZFID, SZERZODOFEL FROM SZERZODO_FEL";
             try {
                 ResultSet rs = kapcsolat.adatbazisReport(sql5); 
@@ -162,5 +171,54 @@ public class SzerzrogzitesController implements Initializable {
             } finally {
                 kapcsolat.closeConnection();
             }
-            
-}}
+    }
+     @FXML
+    private void mentesAction(ActionEvent event) {
+        //a szerződés adatainak rögzítése
+        String kozbeszf = (String) KozbeszfajtSzerz.getSelectionModel().getSelectedItem();
+        String szerzf = (String) SzerzFajtSzerz.getSelectionModel().getSelectedItem();
+        String cpv = (String) CpvSzerz.getSelectionModel().getSelectedItem();
+        String projekt = (String) ProjektSzerz.getSelectionModel().getSelectedItem();
+        String szerzfel = (String) SzerzfelSzerz.getSelectionModel().getSelectedItem();
+        
+        if (SzerzNevSzerz.getText().length() <= 100
+                && SzerzertekSzerz.getText().matches("[0-9]{11}")
+                && KozbeszfajtSzerz.getSelectionModel().getSelectedItem()!= null
+                && SzerzFajtSzerz.getSelectionModel().getSelectedItem()!= null
+                && CpvSzerz.getSelectionModel().getSelectedItem()!= null
+                && ProjektSzerz.getSelectionModel().getSelectedItem()!= null
+                && SzerzfelSzerz.getSelectionModel().getSelectedItem()!= null
+                && SzerzkotSzerz.getValue() != null
+                && SzerzlezarSzerz.getValue() != null
+                && SzerzkotSzerz.getValue().isBefore(SzerzlezarSzerz.getValue())
+                ) {
+
+            String sql = "INSERT INTO SZERZODES('SZERZODESNEVE', 'SZERZODOFEL', 'SZERZODESKOTESDATUMA', 'SZERZODESFAJTAJA', \n"
+                    + "'KOZBESZERZESIELJARASFAJTA', 'CPVKOD', 'PROJEKT', 'SZERZODESERTEKE', 'SZERZODESTERVEZETTLEZARASA', 'MEGJEGYZES',\n"
+                    + "VALUES ('" + SzerzNevSzerz.getText() + "', '" + listSzerzFelId.get(listSzerzFel.indexOf(szerzfel)) + "', '" + SzerzkotSzerz.getValue() + "','" 
+                    + listSzerzFId.get(listSzerzF.indexOf(szerzf)) + "','" + listKejId.get(listKej.indexOf(kozbeszf)) + "','" + listCpvId.get(listCpv.indexOf(cpv)) + "','" + listProjektId.get(listProjekt.indexOf(projekt)) + "','"
+                    + SzerzertekSzerz.getText() + "','" + SzerzlezarSzerz.getValue() + "')";
+            System.out.println(sql);
+            try {
+                kapcsolat.adatbazisbaInsertalas(sql);
+                uzenet.setText("Sikeres mentése a " + SzerzNevSzerz.getText());
+            } catch (SQLException ex) {
+                Logger.getLogger(SzerzrogzitesController.class.getName()).log(Level.SEVERE, null, ex);
+                uzenet.setText("Hiba a mentés során!");
+            } finally {
+                kapcsolat.closeConnection();
+            }
+        }else{
+            uzenet.setText("Ellenőrize a mezők kitöltöttségét!");
+        }
+    }
+    
+    @FXML
+    private void visszaAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) CtrlSzerzVissza.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("fomenu.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }   
+}
