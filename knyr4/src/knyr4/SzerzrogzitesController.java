@@ -81,14 +81,16 @@ public class SzerzrogzitesController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         String sql = "SELECT MAX(SORSZAM) FROM SZERZODES";
-        int x;
+        
             try {
                 ResultSet rs = kapcsolat.adatbazisReport(sql); 
                 while (rs.next()) {
                     int s = rs.getInt("SORSZAM");
-                    x = s+1;
+                    int x = s + 1;
+                    String sorszam = Integer.toString(x);
+                    Sorszam.setText(sorszam); 
                 }
-                Sorszam.setText(x.toString());
+                
             } catch (SQLException ex) {
                 Logger.getLogger(SzerzrogzitesController.class.getName()).log(Level.SEVERE, null, ex);
                 uzenet.setText("Hiba a sorszámlekérés során!");// kell a felületre egy hibaüzenet label
