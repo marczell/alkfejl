@@ -66,7 +66,7 @@ public class FomenuController implements Initializable {
     @FXML
     private void cpvEgybeszamitasAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) CtrlSzerzfel.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("CPV_egyb.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Cpv_egyb.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

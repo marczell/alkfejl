@@ -60,12 +60,12 @@
             <DatePicker fx:id="SzerzlezarSzerz" layoutX="604.0" layoutY="409.0" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="415.0" />
             <ChoiceBox fx:id="SzerzfelSzerz" layoutX="306.0" layoutY="159.0" prefWidth="150.0" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="165.0" />
             <Label fx:id="Sorszam" layoutX="142.0" layoutY="73.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="145" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="70.0" />
-            <Button fx:id="CtrlSzerzVissza" alignment="CENTER" contentDisplay="CENTER" layoutX="661.0" layoutY="521.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" styleClass="buttonbase" stylesheets="@../alkfejl.css" text="Vissza" textAlignment="CENTER" AnchorPane.leftAnchor="660.0" AnchorPane.topAnchor="521.0">
+            <Button fx:id="CtrlSzerzVissza" onAction="#visszaAction" alignment="CENTER" contentDisplay="CENTER" layoutX="661.0" layoutY="521.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" styleClass="buttonbase" stylesheets="@../alkfejl.css" text="Vissza" textAlignment="CENTER" AnchorPane.leftAnchor="660.0" AnchorPane.topAnchor="521.0">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
             </Button>
-            <Label fx:id="uzenet" layoutX="499.0" layoutY="479.0" styleClass="textinputcontrol" text="Label" />
+            <Label fx:id="uzenet" layoutX="499.0" layoutY="479.0" styleClass="textinputcontrol" text="" />
       </children>
     </AnchorPane>
   </children>

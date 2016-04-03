@@ -83,20 +83,20 @@ public class SzerzfelrogzitesController implements Initializable {
     @FXML
     private void mentesAction(ActionEvent event) {
         //a szerződő fél adatainak rögzítése
-        if (SzerzFel.getText().length() <= 100
-                && Varos.getText().length() <= 50
-                && Irszam.getText().matches("[0-9]{4}")
-                && Koterulet.getText().length() <= 100
-                && Hazszam.getText().matches("[0-9]{1,3}")
-                && Telszam.getText().length() <= 25
-                && Faxszam.getText().length() <= 25
-                && Email.getText().matches(EMAIL_PATTERN)
-                && Cegjszam.getText().matches("[0-9]{2}-[0-9]{2}-[0-9]{6}")//2-2-6
-                && Adoszam.getText().matches("[0-9]{8}-[0-9]{1}-[0-9]{2}")//8-1-2
-                && Kapcstartnev.getText().length() <= 100
-                && Kapcstarttelszam.getText().length() <= 25
-                && Kapcstartemail.getText().matches(EMAIL_PATTERN)) {
-
+                if (SzerzFel.getText().length() <= 100
+                        && Varos.getText().length() <= 50
+                        && Irszam.getText().matches("[0-9]{4}")
+                        && Koterulet.getText().length() <= 100
+                        && Hazszam.getText().matches("[0-9]{1,3}")
+                        && Telszam.getText().length() <= 25
+                        && Faxszam.getText().length() <= 25
+                        && Email.getText().matches(EMAIL_PATTERN)
+                        && Cegjszam.getText().matches("[0-9]{2}-[0-9]{2}-[0-9]{6}")//2-2-6
+                        && Adoszam.getText().matches("[0-9]{8}-[0-9]{1}-[0-9]{2}")//8-1-2
+                        && Kapcstartnev.getText().length() <= 100
+                        && Kapcstarttelszam.getText().length() <= 25
+                        && Kapcstartemail.getText().matches(EMAIL_PATTERN)) {
+//        if (true) { //teszteléshez egyszerübb adatbevitel
             String sql = "INSERT INTO `szerzodo_fel`(`szerzodofel`, `szekhely-varos`, `szekhely-iranyitoszam`, `szekhely-kozterulet`, \n"
                     + "`szekhely-hazszam`, `telefonszam`, `faxszam`, `e-mail`, `cegjegyzekszam`, `adoszam`, `kapcsolattarto-neve`,\n"
                     + "`kapcsolattarto-tel`, `kapcsolattarto-email`) \n"
@@ -110,11 +110,11 @@ public class SzerzfelrogzitesController implements Initializable {
                 uzenet.setText("Sikeres mentése a " + SzerzFel.getText());
             } catch (SQLException ex) {
                 Logger.getLogger(SzerzfelrogzitesController.class.getName()).log(Level.SEVERE, null, ex);
-                uzenet.setText("Hiba a mentés során!");
+                uzenet.setText("Hiba az adatbázis művelet során!");
             } finally {
                 kapcsolat.closeConnection();
             }
-        }else{
+        } else {
             uzenet.setText("Hiba a mentés során!");
         }
     }

@@ -80,7 +80,7 @@ public class SzerzrogzitesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        String sql = "SELECT MAX(SORSZAM) FROM SZERZODES";
+        String sql = "SELECT MAX(SORSZAM) as SORSZAM FROM SZERZODES";
         
             try {
                 ResultSet rs = kapcsolat.adatbazisReport(sql); 
@@ -198,7 +198,7 @@ public class SzerzrogzitesController implements Initializable {
         String szerzfel = (String) SzerzfelSzerz.getSelectionModel().getSelectedItem();
         
         if (SzerzNevSzerz.getText().length() <= 100
-                && SzerzertekSzerz.getText().matches("[0-9]{11}")
+                && SzerzertekSzerz.getText().matches("[0-9]{6,11}")
                 && KozbeszfajtSzerz.getSelectionModel().getSelectedItem()!= null
                 && SzerzFajtSzerz.getSelectionModel().getSelectedItem()!= null
                 && CpvSzerz.getSelectionModel().getSelectedItem()!= null

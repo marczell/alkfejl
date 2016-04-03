@@ -26,6 +26,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -78,7 +80,6 @@ public class Erteklista_modController implements Initializable {
         
     } 
     
-    @FXML
     private void listaKivalasztasAction(ActionEvent event) {
         //a értéklista kiválasztása
         Object kivalasztott = ErtekLista2.getSelectionModel().getSelectedItem();
@@ -170,6 +171,7 @@ public class Erteklista_modController implements Initializable {
                 kapcsolat.closeConnection();
             }
     }
+    @FXML
      private void ujErtekMentes(ActionEvent event) {
         //új érték mentése
         Object kivalasztott = ErtekLista1.getSelectionModel().getSelectedItem();
@@ -187,7 +189,7 @@ public class Erteklista_modController implements Initializable {
             tabla = "SZERZODESFAJTAI";
             oszlop = "SZERZODESFAJTA";   
         } 
-        String sql = "INSERT INTO "+tabla+" ("+oszlop+",LATHATO) VALUES ("+UjErtek.getText()+", TRUE)";
+        String sql = "INSERT INTO "+tabla+" ("+oszlop+",LATHATO) VALUES ('"+UjErtek.getText()+"', TRUE)";
     
         try {
                 kapcsolat.adatbazisbaInsertalas(sql);
@@ -208,4 +210,8 @@ public class Erteklista_modController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }   
+
+    @FXML
+    private void listaKivalasztasAction(ContextMenuEvent event) {
+    }
      }
