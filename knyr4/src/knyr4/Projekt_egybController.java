@@ -82,10 +82,10 @@ public class Projekt_egybController implements Initializable {
                 + "from projektek p, szerzodes sz \n"
                 + "where sz.projekt=p.projektid \n";
         if (PrEgybeTol.getValue() != null) {
-            sql += "and sz.szezodeskotesdatuma >= '" + PrEgybeTol.getValue() + "' ";
+            sql += "and sz.szerzodeskotesdatuma >= '" + PrEgybeTol.getValue() + "' ";
         }
         if (PrEgybeIg.getValue() != null) {
-            sql += "and sz.szezodeskotesdatuma <= '" + PrEgybeIg.getValue() + "' ";
+            sql += "and sz.szerzodeskotesdatuma <= '" + PrEgybeIg.getValue() + "' ";
         }
         sql += "group by sz.projekt";
         System.out.println(sql);
