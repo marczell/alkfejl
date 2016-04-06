@@ -93,11 +93,11 @@ public class SzerzrogzitesController implements Initializable {
                 
             } catch (SQLException ex) {
                 Logger.getLogger(SzerzrogzitesController.class.getName()).log(Level.SEVERE, null, ex);
-                uzenet.setText("Hiba a sorszámlekérés során!");// kell a felületre egy hibaüzenet label
+                uzenet.setText("Hiba a sorszámlekérés során!");
             } finally {
                 kapcsolat.closeConnection();
         }
-        String sql1 = "SELECT KOZBESZERZESIELJARASFAJTAI, KEJID FROM KOZBESZERZESIELJARASFAJTAI WHERE LATHATO=TRUE";//meg kell nézni , hogy az oszlopot valóban lathatónak hívják e
+        String sql1 = "SELECT KOZBESZERZESIELJARASFAJTAI, KEJID FROM KOZBESZERZESIELJARASFAJTAI WHERE LATHATO=TRUE";
             try {
                 ResultSet rs = kapcsolat.adatbazisReport(sql1); 
                 while (rs.next()) {
@@ -111,11 +111,11 @@ public class SzerzrogzitesController implements Initializable {
                 KozbeszfajtSzerz.setItems(obListKej);
             } catch (SQLException ex) {
                 Logger.getLogger(SzerzrogzitesController.class.getName()).log(Level.SEVERE, null, ex);
-                uzenet.setText("Hiba az értékkeresés során!");// kell a felületre egy hibaüzenet label
+                uzenet.setText("Hiba az értékkeresés során!");
             } finally {
                 kapcsolat.closeConnection();
             }
-        String sql2 = "SELECT SZERZODESFAJTA, SZERZODESFAJTAID FROM SZERZODESFAJTAI WHERE LATHATO=TRUE";//meg kell nézni , hogy az oszlopot valóban lathatónak hívják e
+        String sql2 = "SELECT SZERZODESFAJTA, SZERZODESFAJTAID FROM SZERZODESFAJTAI WHERE LATHATO=TRUE";
             try {
                 ResultSet rs = kapcsolat.adatbazisReport(sql2); 
                 while (rs.next()) {
@@ -129,11 +129,11 @@ public class SzerzrogzitesController implements Initializable {
                 SzerzFajtSzerz.setItems(obListSzerzF);
             } catch (SQLException ex) {
                 Logger.getLogger(SzerzrogzitesController.class.getName()).log(Level.SEVERE, null, ex);
-                uzenet.setText("Hiba az értékkeresés során!");// kell a felületre egy hibaüzenet label
+                uzenet.setText("Hiba az értékkeresés során!");
             } finally {
                 kapcsolat.closeConnection();
             }
-        String sql3 = "SELECT CPVKOD, CPVID FROM CPVKODOK WHERE LATHATO=TRUE";//meg kell nézni , hogy az oszlopot valóban lathatónak hívják e
+        String sql3 = "SELECT CPVKOD, CPVID FROM CPVKODOK WHERE LATHATO=TRUE";
             try {
                 ResultSet rs = kapcsolat.adatbazisReport(sql3); 
                 while (rs.next()) {
@@ -147,11 +147,11 @@ public class SzerzrogzitesController implements Initializable {
                 CpvSzerz.setItems(obListSzerzF);
             } catch (SQLException ex) {
                 Logger.getLogger(SzerzrogzitesController.class.getName()).log(Level.SEVERE, null, ex);
-                uzenet.setText("Hiba az értékkeresés során!");// kell a felületre egy hibaüzenet label
+                uzenet.setText("Hiba az értékkeresés során!");
             } finally {
                 kapcsolat.closeConnection();
             }
-        String sql4 = "SELECT PROJEKT, PROJEKTID FROM PROJEKTEK WHERE LATHATO=TRUE";//meg kell nézni , hogy az oszlopot valóban lathatónak hívják e
+        String sql4 = "SELECT PROJEKT, PROJEKTID FROM PROJEKTEK WHERE LATHATO=TRUE";
             try {
                 ResultSet rs = kapcsolat.adatbazisReport(sql4); 
                 while (rs.next()) {
@@ -165,7 +165,7 @@ public class SzerzrogzitesController implements Initializable {
                 ProjektSzerz.setItems(obListProjekt);
             } catch (SQLException ex) {
                 Logger.getLogger(SzerzrogzitesController.class.getName()).log(Level.SEVERE, null, ex);
-                uzenet.setText("Hiba az értékkeresés során!");// kell a felületre egy hibaüzenet label
+                uzenet.setText("Hiba az értékkeresés során!");
             } finally {
                 kapcsolat.closeConnection();
             }
@@ -183,7 +183,7 @@ public class SzerzrogzitesController implements Initializable {
                 SzerzfelSzerz.setItems(obListSzerzFel);
             } catch (SQLException ex) {
                 Logger.getLogger(SzerzrogzitesController.class.getName()).log(Level.SEVERE, null, ex);
-                uzenet.setText("Hiba az értékkeresés során!");// kell a felületre egy hibaüzenet label
+                uzenet.setText("Hiba az értékkeresés során!");
             } finally {
                 kapcsolat.closeConnection();
             }
@@ -198,7 +198,7 @@ public class SzerzrogzitesController implements Initializable {
         String szerzfel = (String) SzerzfelSzerz.getSelectionModel().getSelectedItem();
         
         if (SzerzNevSzerz.getText().length() <= 100
-                && SzerzertekSzerz.getText().matches("\\d{11}")
+                //&& SzerzertekSzerz.getText().matches("\\d{11}") // itt nem jó az ellenőrzés. Marcell nézd meg, hogy mi a hiba 11 int lehet az érték
                 && KozbeszfajtSzerz.getSelectionModel().getSelectedItem()!= null
                 && SzerzFajtSzerz.getSelectionModel().getSelectedItem()!= null
                 && CpvSzerz.getSelectionModel().getSelectedItem()!= null
@@ -209,11 +209,10 @@ public class SzerzrogzitesController implements Initializable {
                 && SzerzkotSzerz.getValue().isBefore(SzerzlezarSzerz.getValue())
                 ) {
 
-            String sql = "INSERT INTO SZERZODES('SZERZODESNEVE', 'SZERZODOFEL', 'SZERZODESKOTESDATUMA', 'SZERZODESFAJTAJA', \n"
-                    + "'KOZBESZERZESIELJARASFAJTA', 'CPVKOD', 'PROJEKT', 'SZERZODESERTEKE', 'SZERZODESTERVEZETTLEZARASA', 'MEGJEGYZES',\n"
-                    + "VALUES ('" + SzerzNevSzerz.getText() + "', '" + listSzerzFelId.get(listSzerzFel.indexOf(szerzfel)) + "', '" + SzerzkotSzerz.getValue() + "','" 
+            String sql = "INSERT INTO SZERZODES(`szerzodesneve`, `szerzodofel`, `szerzodeskotesdatuma`, `szerzodesfajtaja`, `kozbeszerzesieljarasfajta`, `cpvkod`, `projekt`, `szerzodeserteke`, `szerzodestervezettlezarasa`, `megjegyzes`)\n"
+                    + " VALUES ('" + SzerzNevSzerz.getText() + "', '" + listSzerzFelId.get(listSzerzFel.indexOf(szerzfel)) + "', '" + SzerzkotSzerz.getValue() + "','" 
                     + listSzerzFId.get(listSzerzF.indexOf(szerzf)) + "','" + listKejId.get(listKej.indexOf(kozbeszf)) + "','" + listCpvId.get(listCpv.indexOf(cpv)) + "','" + listProjektId.get(listProjekt.indexOf(projekt)) + "','"
-                    + SzerzertekSzerz.getText() + "','" + SzerzlezarSzerz.getValue() + "')";
+                    + SzerzertekSzerz.getText() + "','" + SzerzlezarSzerz.getValue() + "', 'ok')"; 
             System.out.println(sql);
             try {
                 kapcsolat.adatbazisbaInsertalas(sql);
@@ -237,5 +236,5 @@ public class SzerzrogzitesController implements Initializable {
         stage.setScene(scene);
         stage.show();
     } 
-    //git teszt
+    
 }

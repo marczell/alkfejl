@@ -74,6 +74,8 @@ public class SzerzfelrogzitesController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -108,6 +110,20 @@ public class SzerzfelrogzitesController implements Initializable {
             try {
                 kapcsolat.adatbazisbaInsertalas(sql);
                 uzenet.setText("Sikeres mentése a " + SzerzFel.getText());
+                SzerzFel.clear();
+                Varos.clear();
+                Irszam.clear();
+                Koterulet.clear();
+                Hazszam.clear();
+                Telszam.clear();
+                Faxszam.clear();
+                Email.clear();
+                Cegjszam.clear();
+                Adoszam.clear();
+                Kapcstartnev.clear();
+                Kapcstarttelszam.clear();
+                Kapcstartemail.clear();
+                
             } catch (SQLException ex) {
                 Logger.getLogger(SzerzfelrogzitesController.class.getName()).log(Level.SEVERE, null, ex);
                 uzenet.setText("Hiba az adatbázis művelet során!");
@@ -115,7 +131,7 @@ public class SzerzfelrogzitesController implements Initializable {
                 kapcsolat.closeConnection();
             }
         } else {
-            uzenet.setText("Hiba a mentés során!");
+            uzenet.setText("Hibás adatok!");
         }
     }
 
