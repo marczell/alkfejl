@@ -14,15 +14,10 @@
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
-        <Menu mnemonicParsing="false" text="Felhasználói fiók">
+        <Menu mnemonicParsing="false" text="Kilépés">
           <items>
             <MenuItem mnemonicParsing="false" text="Bezárás" />
             <MenuItem mnemonicParsing="false" text="Kijelentkezés" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
           </items>
         </Menu>
       </menus>
@@ -75,7 +70,7 @@
                   <Font name="Verdana" size="14.0" />
                </font>
             </Button>
-            <Label fx:id="uzenet" layoutX="359.0" layoutY="30.0" />
+            <Label fx:id="uzenet" layoutX="516.0" layoutY="28.0" prefHeight="17.0" prefWidth="194.0" textFill="RED" />
       </children>
     </AnchorPane>
   </children>

@@ -198,7 +198,7 @@ public class SzerzrogzitesController implements Initializable {
         String szerzfel = (String) SzerzfelSzerz.getSelectionModel().getSelectedItem();
         
         if (SzerzNevSzerz.getText().length() <= 100
-                && SzerzertekSzerz.getText().matches("[0-9]{6,11}")
+                && SzerzertekSzerz.getText().matches("\\d{11}")
                 && KozbeszfajtSzerz.getSelectionModel().getSelectedItem()!= null
                 && SzerzFajtSzerz.getSelectionModel().getSelectedItem()!= null
                 && CpvSzerz.getSelectionModel().getSelectedItem()!= null
@@ -236,5 +236,6 @@ public class SzerzrogzitesController implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-    }   
+    } 
+    //git teszt
 }

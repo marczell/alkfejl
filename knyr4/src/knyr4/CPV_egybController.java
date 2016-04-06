@@ -5,12 +5,24 @@
  */
 package knyr4;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import model.DataEgybentartas;
 
 /**
  * FXML Controller class
@@ -18,6 +30,7 @@ import javafx.scene.control.DatePicker;
  * @author Marcell
  */
 public class CPV_egybController implements Initializable {
+
     @FXML
     private Button CtrlCpvEgybe;
     @FXML
@@ -26,13 +39,56 @@ public class CPV_egybController implements Initializable {
     private DatePicker CtrlCpvIg;
     @FXML
     private Button CtrlCpvVissza;
+    @FXML
+    private TableView<DataEgybentartas> cpvEgybenTable;
+    @FXML
+    private TableColumn<DataEgybentartas, String> cpvEgybNev;
+    @FXML
+    private TableColumn<DataEgybentartas, String> cpvEgybErtek;
+    
+    private Kapcsolat kapcsolat = new Kapcsolat();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+        cpvEgybNev.setCellValueFactory(new PropertyValueFactory<DataEgybentartas, String>("nev"));
+        cpvEgybErtek.setCellValueFactory(new PropertyValueFactory<DataEgybentartas, String>("ertek"));
+    }
+
+    @FXML
+    private void lekerdezesAction(ActionEvent event) {
+//        if (CtrlCpvTol.getValue().isAfter(CtrlCpvIg.getValue())) {
+//            hibaLabel.setText("Az -ig dátum nem lehet nagyobb a -tól dátumnál!");
+//        } else {
+//            hibaLabel.setText("");
+//        }
+        String sql;
+        sql = "select c.cpvkod, sum(sz.szerzodeserteke) as osszeg \n"
+                + "from cpvkodok c, szerzodes sz \n"
+                + "where sz.projekt=c.cpvid ";
+        if (CtrlCpvTol.getValue() != null && CtrlCpvTol.getValue() != null) {
+            sql += "and sz.szezodeskotesdatuma >= '" + CtrlCpvTol.getValue() + "' ";
+        }
+        if (CtrlCpvIg.getValue() != null) {
+            sql += "and sz.szezodeskotesdatuma <= '" + CtrlCpvIg.getValue() + "' ";
+        }
+        sql += "group by c.cpvkod";
+        System.out.println(sql);
+        ArrayList<DataEgybentartas> dataEgybentartasLista = //new ArrayList<>();
+                kapcsolat.cpvEgybOsszes(sql);
+//        cpvEgybentartasLista.add(new CpvEgybentartas("cpv neve", "15"));
+        cpvEgybenTable.setItems(FXCollections.observableArrayList(dataEgybentartasLista));
+    }
+
+    @FXML
+    private void visszaAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) CtrlCpvVissza.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("fomenu.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }

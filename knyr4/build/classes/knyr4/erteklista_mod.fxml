@@ -14,15 +14,10 @@
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
-        <Menu mnemonicParsing="false" text="Felhasználói fiók">
+        <Menu mnemonicParsing="false" text="Kilépés">
           <items>
             <MenuItem mnemonicParsing="false" text="Bezárás" />
             <MenuItem mnemonicParsing="false" text="Kijelentkezés" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
           </items>
         </Menu>
       </menus>
@@ -39,7 +34,7 @@
                   <Font name="Verdana" size="14.0" />
                </font>
             </Button>
-            <Label layoutX="176.0" layoutY="28.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="ÉRTÉKLISTÁK MÓDOSÍTÁSA" />
+            <Label layoutX="176.0" layoutY="28.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="ÉRTÉKLISTÁK MÓDOSÍTÁSA" AnchorPane.topAnchor="28.0" />
             <Label layoutX="72.0" layoutY="134.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Új elem rögzítése" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="110.0" />
             <Label layoutX="72.0" layoutY="184.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Értéklista" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="150.0" />
             <Label layoutX="367.0" layoutY="184.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Új elem" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="150.0" />
