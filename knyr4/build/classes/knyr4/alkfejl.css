@@ -1,11 +1,11 @@
 .buttonbase {
-	-fx-text-alignment:center; -fx-font-family:verdana; -fx-background-color:tan; -fx-font-size:14px; -fx-border-color:sienna; -fx-border-style:outset; -fx-border-width:2px;
+	-fx-text-alignment:center; -fx-font-family:verdana; -fx-background-color:tan; -fx-font-size:14px; -fx-border-color:sienna; -fx-border-style:solid; -fx-border-width:2px;
 	}
 .region {
-    -fx-background-color: levander; -fx-border-color:mediumslateblue; -fx-border-style:groove; -fx-border-width:medium;
+    -fx-background-color:rgb(240,220,235); -fx-border-color:mediumslateblue; -fx-border-style:solid; -fx-border-width:3px;
 }
 .textinputcontrol {
-	-fx-font:verdana; -fx-font-size:14px;
+	-fx-font-family:verdana; -fx-font-size:14px;
 }
 
 .shape{

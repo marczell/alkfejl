@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -48,7 +50,7 @@ public class Erteklista_modController implements Initializable {
     @FXML
     private ChoiceBox<?> ErtekLista1;
     @FXML
-    private ChoiceBox<?> ErtekLista2;
+    private ChoiceBox<String> ErtekLista2;
     @FXML
     private ChoiceBox<?> OsszesErtek;
     @FXML
@@ -62,6 +64,8 @@ public class Erteklista_modController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -77,76 +81,156 @@ public class Erteklista_modController implements Initializable {
         ErtekLista1.setItems(obList);
         ErtekLista2.getItems().clear();
         ErtekLista2.setItems(obList);
-        
-    } 
+      
+        ErtekLista2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+      @Override
+      public void changed(ObservableValue<? extends String> selected, String regiErtek, String ujErtek) {
+          String sql;
+          List<String> list2 = new ArrayList<>();
+        if (ujErtek != null) {
+          switch(ujErtek) {
+            case "CPV kód":  sql = "SELECT CPVKOD FROM CPVKODOK WHERE LATHATO=TRUE";
+                try {
+                    tabla = "CPVKODOK";
+                    oszlop = "CPVKOD";
+                    ResultSet rs = kapcsolat.adatbazisReport(sql); 
+                    while (rs.next()) {
+                        String s = rs.getString("CPVKOD");
+                        list2.add(s);
+                    }
+                } catch (SQLException ex) {
+                Logger.getLogger(Erteklista_modController.class.getName()).log(Level.SEVERE, null, ex);
+                    uzenet.setText("Hiba az értékkeresés során!");
+                } finally {
+                    kapcsolat.closeConnection();
+                };break;
+            case "Közbeszerzési eljárás fajta": sql = "SELECT KOZBESZERZESIELJARASFAJTAI FROM KOZBESZERZESIELJARASFAJTAI WHERE LATHATO=TRUE";
+                try { 
+                    tabla = "KOZBESZERZESIELJARASFAJTAI";
+                    oszlop = "KOZBESZERZESIELJARASFAJTAI";
+                    ResultSet rs = kapcsolat.adatbazisReport(sql); 
+                    while (rs.next()) {
+                        String s = rs.getString("KOZBESZERZESIELJARASFAJTAI");
+                        list2.add(s);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(Erteklista_modController.class.getName()).log(Level.SEVERE, null, ex);
+                    uzenet.setText("Hiba az értékkeresés során!");
+                } finally {
+                    kapcsolat.closeConnection();
+                };break;
+            case "Projekt":   sql = "SELECT PROJEKT FROM PROJEKTEK WHERE LATHATO=TRUE";
+                try {
+                    tabla = "PROJEKTEK";
+                     oszlop = "PROJEKT";
+                    ResultSet rs = kapcsolat.adatbazisReport(sql); 
+                    while (rs.next()) {
+                        String s = rs.getString("PROJEKT");
+                        list2.add(s);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(Erteklista_modController.class.getName()).log(Level.SEVERE, null, ex);
+                    uzenet.setText("Hiba az értékkeresés során!");
+                } finally {
+                    kapcsolat.closeConnection();
+                }break;
+            case "Szerződés fajta":   sql = "SELECT SZERZODESFAJTA FROM SZERZODESFAJTAI WHERE LATHATO=TRUE";
+                try {
+                    tabla = "SZERZODESFAJTAI";
+                    oszlop = "SZERZODESFAJTA";
+                    ResultSet rs = kapcsolat.adatbazisReport(sql); 
+                    while (rs.next()) {
+                        String s = rs.getString("SZERZODESFAJTA");
+                        list2.add(s);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(Erteklista_modController.class.getName()).log(Level.SEVERE, null, ex);
+                    uzenet.setText("Hiba az értékkeresés során!");
+                } finally {
+                    kapcsolat.closeConnection();
+                } 
+                break;
+          }
+        }
+        ObservableList obList2 = FXCollections.observableList(list2);
+        OsszesErtek.getItems().clear();
+        OsszesErtek.setItems(obList2);
+      }
+
+            
+      });
+    }
     
-    private void listaKivalasztasAction(ActionEvent event) {
+      
+    
+    
+    /*private void listaKivalasztasAction(ActionEvent event) {
         //a értéklista kiválasztása
         Object kivalasztott = ErtekLista2.getSelectionModel().getSelectedItem();
         List<String> list2 = new ArrayList<>();
-        String sql= new String();
+       
         
-        if (kivalasztott.toString()== "CPV kód"){
-            sql = "SELECT CPVKOD FROM CPVKODOK WHERE LATHATO=TRUE";//meg kell nézni , hogy az oszlopot valóban lathatónak hívják e
+        if ("CPV kód".equals(kivalasztott.toString())){
+            String sql1 = "SELECT CPVKOD FROM CPVKODOK WHERE LATHATO=TRUE";
             try {
                 tabla = "CPVKODOK";
                 oszlop = "CPVKOD";
-                ResultSet rs = kapcsolat.adatbazisReport(sql); 
+                ResultSet rs = kapcsolat.adatbazisReport(sql1); 
                 while (rs.next()) {
                     String s = rs.getString("CPVKOD");
                     list2.add(s);
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(Erteklista_modController.class.getName()).log(Level.SEVERE, null, ex);
-                uzenet.setText("Hiba az értékkeresés során!");// kell a felületre egy hibaüzenet label
+                uzenet.setText("Hiba az értékkeresés során!");
             } finally {
                 kapcsolat.closeConnection();
             }
-        } else if (kivalasztott.toString()== "Közbeszerzési eljárás fajta"){
-            sql = "SELECT KOZBESZERZESIELJARASFAJTAI FROM KOZBESZERZESIELJARASFAJTAI WHERE LATHATO=TRUE";//meg kell nézni , hogy az oszlopot valóban lathatónak hívják e
+        } else if ("Közbeszerzési eljárás fajta".equals(kivalasztott.toString())){
+            String sql2 = "SELECT KOZBESZERZESIELJARASFAJTAI FROM KOZBESZERZESIELJARASFAJTAI WHERE LATHATO=TRUE";
             try { 
                 tabla = "KOZBESZERZESIELJARASFAJTAI";
                 oszlop = "KOZBESZERZESIELJARASFAJTAI";
-                ResultSet rs = kapcsolat.adatbazisReport(sql); 
+                ResultSet rs = kapcsolat.adatbazisReport(sql2); 
                 while (rs.next()) {
                     String s = rs.getString("KOZBESZERZESIELJARASFAJTAI");
                     list2.add(s);
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(Erteklista_modController.class.getName()).log(Level.SEVERE, null, ex);
-                uzenet.setText("Hiba az értékkeresés során!");// kell a felületre egy hibaüzenet label
+                uzenet.setText("Hiba az értékkeresés során!");
             } finally {
                 kapcsolat.closeConnection();
             }
-        } else if (kivalasztott.toString()== "Projekt"){
-            sql = "SELECT PROJEKT FROM PROJEKTEK WHERE LATHATO=TRUE";//meg kell nézni , hogy az oszlopot valóban lathatónak hívják e
+        } else if ("Projekt".equals(kivalasztott.toString())){
+            String sql3 = "SELECT PROJEKT FROM PROJEKTEK WHERE LATHATO=TRUE";
             try {
                 tabla = "PROJEKTEK";
                  oszlop = "PROJEKT";
-                ResultSet rs = kapcsolat.adatbazisReport(sql); 
+                ResultSet rs = kapcsolat.adatbazisReport(sql3); 
                 while (rs.next()) {
                     String s = rs.getString("PROJEKT");
                     list2.add(s);
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(Erteklista_modController.class.getName()).log(Level.SEVERE, null, ex);
-                uzenet.setText("Hiba az értékkeresés során!");// kell a felületre egy hibaüzenet label
+                uzenet.setText("Hiba az értékkeresés során!");
             } finally {
                 kapcsolat.closeConnection();
             }
         } else {
-            sql = "SELECT SZERZODESFAJTA FROM SZERZODESFAJTAI WHERE LATHATO=TRUE";
+            String sql4 = "SELECT SZERZODESFAJTA FROM SZERZODESFAJTAI WHERE LATHATO=TRUE";
            try {
                 tabla = "SZERZODESFAJTAI";
                 oszlop = "SZERZODESFAJTA";
-                ResultSet rs = kapcsolat.adatbazisReport(sql); 
+                ResultSet rs = kapcsolat.adatbazisReport(sql4); 
                 while (rs.next()) {
                     String s = rs.getString("SZERZODESFAJTA");
                     list2.add(s);
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(Erteklista_modController.class.getName()).log(Level.SEVERE, null, ex);
-                uzenet.setText("Hiba az értékkeresés során!");// kell a felületre egy hibaüzenet label
+                uzenet.setText("Hiba az értékkeresés során!");
             } finally {
                 kapcsolat.closeConnection();
             } 
@@ -155,7 +239,7 @@ public class Erteklista_modController implements Initializable {
         ObservableList obList2 = FXCollections.observableList(list2);
         OsszesErtek.getItems().clear();
         OsszesErtek.setItems(obList2);
-        }
+        }*/
     @FXML
      private void ertekTorlesAction(ActionEvent event) {
         //a érték lathato paraméterének false-ra állítása
@@ -176,27 +260,31 @@ public class Erteklista_modController implements Initializable {
         //új érték mentése
         Object kivalasztott = ErtekLista1.getSelectionModel().getSelectedItem();
         
-        if (kivalasztott.toString()== "CPV kód" && UjErtek.getText().length() <= 150){
+        if ("CPV kód".equals(kivalasztott.toString()) && UjErtek.getText().length() <= 15){
             tabla="CPVKODOK";
             oszlop = "CPVKOD";
-        } else if (kivalasztott.toString()== "Közbeszerzési eljárás fajta"){
+        } else if ("Közbeszerzési eljárás fajta".equals(kivalasztott.toString())&& UjErtek.getText().length() <= 150){
             tabla = "KOZBESZERZESIELJARASFAJTAI";
             oszlop = "KOZBESZERZESIELJARASFAJTAI";
-        } else if (kivalasztott.toString()== "Projekt"){
+        } else if ("Projekt".equals(kivalasztott.toString())&& UjErtek.getText().length() <= 150){
             tabla = "PROJEKTEK";
             oszlop = "PROJEKT";
-        } else {
+        } else if ("Szerződés fajta".equals(kivalasztott.toString())&& UjErtek.getText().length() <= 150){
             tabla = "SZERZODESFAJTAI";
             oszlop = "SZERZODESFAJTA";   
-        } 
+        } else{
+            uzenet.setText("Hibás érték!");
+        }
         String sql = "INSERT INTO "+tabla+" ("+oszlop+",LATHATO) VALUES ('"+UjErtek.getText()+"', TRUE)";
     
         try {
                 kapcsolat.adatbazisbaInsertalas(sql);
                 uzenet.setText("Sikeres mentése a " + UjErtek.getText());
+                UjErtek.clear();
             } catch (SQLException ex) {
                 Logger.getLogger(Erteklista_modController.class.getName()).log(Level.SEVERE, null, ex);
                 uzenet.setText("Hiba a mentés során!");
+                 UjErtek.clear();
             } finally {
                 kapcsolat.closeConnection();
             }

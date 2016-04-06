@@ -22,7 +22,7 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="region" stylesheets="@../alkfejl.css" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onScrollFinished="#listaKivalasztasAction" prefHeight="600.0" prefWidth="800.0" styleClass="region" stylesheets="@../alkfejl.css" VBox.vgrow="ALWAYS">
       <children>
             <Label layoutX="23.0" layoutY="14.0" prefHeight="48.0" prefWidth="164.0" text="KNYR RENDSZER">
                <font>
@@ -55,7 +55,7 @@
                </font>
             </Button>
             <ChoiceBox fx:id="ErtekLista1" layoutX="173.0" layoutY="149.0" prefWidth="200.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="145.0" />
-            <ChoiceBox fx:id="ErtekLista2" layoutX="231.0" layoutY="347.0" onContextMenuRequested="#listaKivalasztasAction" prefWidth="200.0" AnchorPane.leftAnchor="161.0" AnchorPane.topAnchor="345.0" />
+            <ChoiceBox fx:id="ErtekLista2" layoutX="231.0" layoutY="347.0" onMouseClicked="#listaKivalasztasAction" onMouseReleased="#listaKivalasztasAction" onScrollFinished="#listaKivalasztasAction" prefWidth="200.0" AnchorPane.leftAnchor="161.0" AnchorPane.topAnchor="345.0" />
             <ChoiceBox fx:id="OsszesErtek" layoutX="172.0" layoutY="356.0" prefWidth="200.0" AnchorPane.leftAnchor="520.0" AnchorPane.topAnchor="345.0" />
             <Line endX="650.0" layoutX="102.0" layoutY="312.0" startX="-50.0" styleClass="shape" AnchorPane.topAnchor="530.0" />
             <Label layoutX="595.0" layoutY="65.0" styleClass="textinputcontrol" stylesheets="@alkfejl.css" />

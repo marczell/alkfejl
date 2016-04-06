@@ -1,5 +1,6 @@
 package knyr4;
 
+import com.sun.javafx.css.StyleManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,8 +18,9 @@ public class Knyr4 extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("fomenu.fxml"));
 
         Scene scene = new Scene(root);
-
-        stage.setScene(scene);
+        Application.setUserAgentStylesheet(null);
+        StyleManager.getInstance().addUserAgentStylesheet("knyr4/alkfejl.css");
+        stage.setScene(scene);    
         stage.show();
     }
 
