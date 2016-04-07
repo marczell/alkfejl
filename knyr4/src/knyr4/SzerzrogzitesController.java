@@ -198,7 +198,7 @@ public class SzerzrogzitesController implements Initializable {
         String szerzfel = (String) SzerzfelSzerz.getSelectionModel().getSelectedItem();
         
         if (SzerzNevSzerz.getText().length() <= 100
-                //&& SzerzertekSzerz.getText().matches("\\d{11}") // itt nem jó az ellenőrzés. Marcell nézd meg, hogy mi a hiba 11 int lehet az érték
+                && SzerzertekSzerz.getText().matches("[0-9]{1,11}") // itt nem jó az ellenőrzés. Marcell nézd meg, hogy mi a hiba 11 int lehet az érték
                 && KozbeszfajtSzerz.getSelectionModel().getSelectedItem()!= null
                 && SzerzFajtSzerz.getSelectionModel().getSelectedItem()!= null
                 && CpvSzerz.getSelectionModel().getSelectedItem()!= null
@@ -217,6 +217,15 @@ public class SzerzrogzitesController implements Initializable {
             try {
                 kapcsolat.adatbazisbaInsertalas(sql);
                 uzenet.setText("Sikeres mentése a " + SzerzNevSzerz.getText());
+                SzerzNevSzerz.clear();
+                SzerzertekSzerz.clear();
+                KozbeszfajtSzerz.getItems().clear();
+                SzerzFajtSzerz.getItems().clear();
+                CpvSzerz.getItems().clear();
+                ProjektSzerz.getItems().clear();
+                SzerzfelSzerz.getItems().clear();
+                SzerzkotSzerz.getEditor().clear();
+                SzerzlezarSzerz.getEditor().clear();
             } catch (SQLException ex) {
                 Logger.getLogger(SzerzrogzitesController.class.getName()).log(Level.SEVERE, null, ex);
                 uzenet.setText("Hiba a mentés során!");

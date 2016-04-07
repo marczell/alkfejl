@@ -18,8 +18,8 @@ public class Knyr4 extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("fomenu.fxml"));
 
         Scene scene = new Scene(root);
-        Application.setUserAgentStylesheet(null);
-        StyleManager.getInstance().addUserAgentStylesheet("knyr4/alkfejl.css");
+        //Application.setUserAgentStylesheet(null);
+        //StyleManager.getInstance().addUserAgentStylesheet("/src/alkfejl.css");
         stage.setScene(scene);    
         stage.show();
     }

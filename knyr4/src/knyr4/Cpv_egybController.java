@@ -50,6 +50,8 @@ public class Cpv_egybController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -69,10 +71,10 @@ public class Cpv_egybController implements Initializable {
                 + "from cpvkodok c, szerzodes sz \n"
                 + "where sz.projekt=c.cpvid ";
         if (CtrlCpvTol.getValue() != null && CtrlCpvTol.getValue() != null) {
-            sql += "and sz.szezodeskotesdatuma >= '" + CtrlCpvTol.getValue() + "' ";
+            sql += "and sz.szerzodeskotesdatuma >= '" + CtrlCpvTol.getValue() + "' ";
         }
         if (CtrlCpvIg.getValue() != null) {
-            sql += "and sz.szezodeskotesdatuma <= '" + CtrlCpvIg.getValue() + "' ";
+            sql += "and sz.szerzodeskotesdatuma <= '" + CtrlCpvIg.getValue() + "' ";
         }
         sql += "group by c.cpvkod";
         System.out.println(sql);

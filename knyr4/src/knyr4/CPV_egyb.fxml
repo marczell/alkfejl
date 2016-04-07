@@ -14,10 +14,15 @@
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
-        <Menu mnemonicParsing="false" text="Kilépés">
+        <Menu mnemonicParsing="false" text="Felhasználói fiók">
           <items>
             <MenuItem mnemonicParsing="false" text="Bezárás" />
             <MenuItem mnemonicParsing="false" text="Kijelentkezés" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
           </items>
         </Menu>
       </menus>

@@ -39,6 +39,8 @@ public class FomenuController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -66,7 +68,7 @@ public class FomenuController implements Initializable {
     @FXML
     private void cpvEgybeszamitasAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) CtrlSzerzfel.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("Cpv_egyb.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("CPV_egyb.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
