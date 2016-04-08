@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.DataEgybentartas;
 import model.ProjektEgybentartas;
+import model.Szerzodes;
 
 /**
  *
@@ -124,6 +125,33 @@ public class Kapcsolat {
                 DataEgybentartas cpvEgybentartas
                         = new DataEgybentartas((String) rs.getObject(1), rs.getObject(2).toString());
                 data.add(cpvEgybentartas);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Kapcsolat.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            closeConnection();
+        }
+        return data;
+    }
+
+    ArrayList<Szerzodes> szerzodesKereses(String sql) {
+        createConnection();
+        ArrayList<Szerzodes> data = new ArrayList<>();
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(sql);
+            ResultSetMetaData rsmd = rs.getMetaData();
+            String[] colnames = new String[rsmd.getColumnCount()];
+            for (int i = 0; i < rsmd.getColumnCount(); i++) {
+                colnames[i] = rsmd.getColumnName(i + 1);
+            }
+            while (rs.next()) {
+                Szerzodes szerzodes
+                        = new Szerzodes(rs.getObject(1).toString(), rs.getObject(2).toString(),
+                            rs.getObject(3).toString(), rs.getObject(8).toString(),
+                            rs.getObject(5).toString(), rs.getObject(6).toString(),
+                            rs.getObject(7).toString(), rs.getObject(8).toString(),
+                            rs.getObject(9).toString(), rs.getObject(10).toString());
+                data.add(szerzodes);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Kapcsolat.class.getName()).log(Level.SEVERE, null, ex);
