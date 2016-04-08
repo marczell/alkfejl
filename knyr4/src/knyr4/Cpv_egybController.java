@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -47,11 +48,11 @@ public class Cpv_egybController implements Initializable {
     private TableColumn<DataEgybentartas, String> cpvEgybErtek;
     
     private Kapcsolat kapcsolat = new Kapcsolat();
+    @FXML
+    private Label hibaLabel;
 
     /**
      * Initializes the controller class.
-     * @param url
-     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -61,20 +62,20 @@ public class Cpv_egybController implements Initializable {
 
     @FXML
     private void lekerdezesAction(ActionEvent event) {
-//        if (CtrlCpvTol.getValue().isAfter(CtrlCpvIg.getValue())) {
-//            hibaLabel.setText("Az -ig dátum nem lehet nagyobb a -tól dátumnál!");
-//        } else {
-//            hibaLabel.setText("");
-//        }
+        if (CtrlCpvTol.getValue()!=null && CtrlCpvTol.getValue().isAfter(CtrlCpvIg.getValue())) {
+            hibaLabel.setText("Az -ig dátum nem lehet nagyobb a -tól dátumnál!");
+        } else {
+            hibaLabel.setText("");
+        }
         String sql;
         sql = "select c.cpvkod, sum(sz.szerzodeserteke) as osszeg \n"
                 + "from cpvkodok c, szerzodes sz \n"
                 + "where sz.projekt=c.cpvid ";
         if (CtrlCpvTol.getValue() != null && CtrlCpvTol.getValue() != null) {
-            sql += "and sz.szerzodeskotesdatuma >= '" + CtrlCpvTol.getValue() + "' ";
+            sql += "and sz.szezodeskotesdatuma >= '" + CtrlCpvTol.getValue() + "' ";
         }
         if (CtrlCpvIg.getValue() != null) {
-            sql += "and sz.szerzodeskotesdatuma <= '" + CtrlCpvIg.getValue() + "' ";
+            sql += "and sz.szezodeskotesdatuma <= '" + CtrlCpvIg.getValue() + "' ";
         }
         sql += "group by c.cpvkod";
         System.out.println(sql);
