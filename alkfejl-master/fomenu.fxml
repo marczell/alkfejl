@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu fx:id="ctrlKilepes" mnemonicParsing="false" text="Kilépés" />
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="region" stylesheets="@../alkfejl.css" VBox.vgrow="ALWAYS">
+      <children>
+            <Label layoutX="23.0" layoutY="14.0" prefHeight="48.0" prefWidth="164.0" text="KNYR RENDSZER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="CtrlSzerzfel" alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="122.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" styleClass="buttonbase" stylesheets="@../alkfejl.css" text="Szerződő fél rögzítése" textAlignment="CENTER" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="120.0">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="CtrlSzerz" layoutX="79.0" layoutY="180.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" styleClass="buttonbase" stylesheets="@../alkfejl.css" text="Szerződés rögzítése" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="180.0">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="CtrlCpv" layoutX="79.0" layoutY="240.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" styleClass="buttonbase" stylesheets="@../alkfejl.css" text="CPV egybeszámítás" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="240.0">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="CtrlProjekt" layoutX="79.0" layoutY="304.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" styleClass="buttonbase" stylesheets="@../alkfejl.css" text="Projekt egybeszámítás" textAlignment="CENTER" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="300.0">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="CtrlKeres" layoutX="77.0" layoutY="367.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" styleClass="buttonbase" stylesheets="@../alkfejl.css" text="Keresés" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="360.0">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="CtrlErtek" layoutX="75.0" layoutY="427.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" styleClass="buttonbase" stylesheets="@../alkfejl.css" text="Értéklisták" textAlignment="CENTER" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="420.0">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+            </Button>
+            <TextArea layoutX="356.0" layoutY="126.0" prefHeight="330.0" prefWidth="330.0" text="Üdvözöljük a Közbeszerzési Szerződésnyilvántartó Rendszerben!&#10;Válasszon a menüpontok közül!" wrapText="true" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="120.0">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+            </TextArea>
+      </children>
+    </AnchorPane>
+  </children>
+  <stylesheets>
+    <URL value="@BasicApplication.css" />
+  </stylesheets>
+</VBox>
