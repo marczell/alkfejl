@@ -5,6 +5,7 @@
  */
 package knyr4;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -47,6 +49,8 @@ public class CPV_egybController implements Initializable {
     private TableColumn<DataEgybentartas, String> cpvEgybErtek;
     
     private Kapcsolat kapcsolat = new Kapcsolat();
+    @FXML
+    private Label hibaLabel;
 
     /**
      * Initializes the controller class.
@@ -59,20 +63,20 @@ public class CPV_egybController implements Initializable {
 
     @FXML
     private void lekerdezesAction(ActionEvent event) {
-//        if (CtrlCpvTol.getValue().isAfter(CtrlCpvIg.getValue())) {
-//            hibaLabel.setText("Az -ig dátum nem lehet nagyobb a -tól dátumnál!");
-//        } else {
-//            hibaLabel.setText("");
-//        }
+        if (CtrlCpvTol.getValue()!=null && CtrlCpvTol.getValue().isAfter(CtrlCpvIg.getValue())) {
+            hibaLabel.setText("Az -ig dátum nem lehet nagyobb a -tól dátumnál!");
+        } else {
+            hibaLabel.setText("");
+        }
         String sql;
         sql = "select c.cpvkod, sum(sz.szerzodeserteke) as osszeg \n"
                 + "from cpvkodok c, szerzodes sz \n"
                 + "where sz.projekt=c.cpvid ";
         if (CtrlCpvTol.getValue() != null && CtrlCpvTol.getValue() != null) {
-            sql += "and sz.szezodeskotesdatuma >= '" + CtrlCpvTol.getValue() + "' ";
+            sql += "and sz.szerzodeskotesdatuma >= '" + CtrlCpvTol.getValue() + "' ";
         }
         if (CtrlCpvIg.getValue() != null) {
-            sql += "and sz.szezodeskotesdatuma <= '" + CtrlCpvIg.getValue() + "' ";
+            sql += "and sz.szerzodeskotesdatuma <= '" + CtrlCpvIg.getValue() + "' ";
         }
         sql += "group by c.cpvkod";
         System.out.println(sql);
@@ -87,6 +91,9 @@ public class CPV_egybController implements Initializable {
         Stage stage = (Stage) CtrlCpvVissza.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("fomenu.fxml"));
         Scene scene = new Scene(root);
+         File f = new File("alkfejl.css");
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
         stage.setScene(scene);
         stage.show();
     }

@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/zsofi/Documents/NetBeansProjects/alkfejl-master/knyr4/src/knyr4/Knyr4.java</file>
-            <file>file:/C:/Users/zsofi/Documents/NetBeansProjects/alkfejl-master/knyr4/src/knyr4/FomenuController.java</file>
-            <file>file:/C:/Users/zsofi/Documents/NetBeansProjects/alkfejl-master/knyr4/src/knyr4/Kapcsolat.java</file>
-            <file>file:/C:/Users/zsofi/Documents/NetBeansProjects/alkfejl-master/knyr4/src/knyr4/Cpv_egybController.java</file>
+            <file>file:/C:/Users/zsofi/Documents/NetBeansProjects/knyr4/src/knyr4/Knyr4.java</file>
+            <file>file:/C:/Users/zsofi/Documents/NetBeansProjects/knyr4/src/knyr4/SzerzrogzitesController.java</file>
+            <file>file:/C:/Users/zsofi/Documents/NetBeansProjects/knyr4/src/knyr4/erteklista_mod.fxml</file>
+            <file>file:/C:/Users/zsofi/Documents/NetBeansProjects/knyr4/src/knyr4/KeresesController.java</file>
+            <file>file:/C:/Users/zsofi/Documents/NetBeansProjects/knyr4/src/knyr4/Kapcsolat.java</file>
         </group>
     </open-files>
 </project-private>

@@ -5,6 +5,7 @@
  */
 package knyr4;
 
+import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
@@ -234,14 +235,14 @@ public class KeresesController implements Initializable {
         }
         String sql;
         sql = "select sorszam, szerzodesneve, szf.szerzodofel, kef.kozbeszerzesieljarasfajtai, "
-                + "szfaj.szerzodesfajta, c.cpvkod, p.projekt, sz.szezodeskotesdatuma, "
+                + "szfaj.szerzodesfajta, c.cpvkod, p.projekt, sz.szerzodeskotesdatuma, "
                 + "sz.szerzodestervezettlezarasa, sz.szerzodeserteke \n"
                 + "from szerzodes sz, projektek p, szerzodo_fel szf, szerzodesfajtai szfaj, "
                 + "kozbeszerzesieljarasfajtai kef, cpvkodok c\n"
                 + "where sz.projekt=p.projektid "
                 + "and sz.szerzodofel= szf.szfid "
                 + "and sz.szerzodesfajtaja=szfaj.szerzodesfajtaid "
-                + "and sz.kozbeszerzésieljarasfajta=kef.kejid "
+                + "and sz.kozbeszerzesieljarasfajta=kef.kejid "
                 + "and sz.cpvkod=c.cpvid\n ";
 
         if (SzerzNevKereses.getText() != null && !SzerzNevKereses.getText().equals("")) {
@@ -252,7 +253,7 @@ public class KeresesController implements Initializable {
         }
 
         if (KozbeszFajtKereses.getValue() != null) {
-            sql += "and kozbeszerzésieljarasfajta <= '" + KozbeszFajtKereses.getValue() + "' ";
+            sql += "and kozbeszerzesieljarasfajta <= '" + KozbeszFajtKereses.getValue() + "' ";
         }
         if (SzerzFajtKereses.getValue() != null) {
             sql += "and szerzodesfajtaja <= '" + SzerzKotIgKereses.getValue() + "' ";
@@ -265,17 +266,17 @@ public class KeresesController implements Initializable {
         }
 
         if (SzerzKotTolKereses.getValue() != null) {
-            sql += "and sz.szezodeskotesdatuma >= '" + SzerzKotTolKereses.getValue() + "' ";
+            sql += "and sz.szerzodeskotesdatuma >= '" + SzerzKotTolKereses.getValue() + "' ";
         }
         if (SzerzKotIgKereses.getValue() != null) {
-            sql += "and sz.szezodeskotesdatuma <= '" + SzerzKotIgKereses.getValue() + "' ";
+            sql += "and sz.szerzodeskotesdatuma <= '" + SzerzKotIgKereses.getValue() + "' ";
         }
 
         if (SzerzLezarTolKereses.getValue() != null) {
             sql += "and sz.szezodeskotesdatuma >= '" + SzerzLezarTolKereses.getValue() + "' ";
         }
         if (SzerzLezarIgKereses.getValue() != null) {
-            sql += "and sz.szezodeskotesdatuma <= '" + SzerzLezarIgKereses.getValue() + "' ";
+            sql += "and sz.szerzodeskotesdatuma <= '" + SzerzLezarIgKereses.getValue() + "' ";
         }
         sql += "group by sorszam";
         System.out.println(sql);
@@ -290,6 +291,9 @@ public class KeresesController implements Initializable {
         Stage stage = (Stage) CtrlKeresesVissza.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("fomenu.fxml"));
         Scene scene = new Scene(root);
+        File f = new File("alkfejl.css");
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
         stage.setScene(scene);
         stage.show();
     }

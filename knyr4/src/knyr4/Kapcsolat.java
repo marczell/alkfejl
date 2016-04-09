@@ -19,7 +19,9 @@ public class Kapcsolat {
     private void createConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/knyr?zeroDateTimeBehavior=convertToNull", "root", "");
+            //conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/knyr?zeroDateTimeBehavior=convertToNull", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/knyr?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf8&characterSetResults=utf8", "root", "");
+//            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/knyr?zeroDateTimeBehavior=convertToNull?user='root'&password=''&useUnicode=true&characterEncoding=utf8&characterSetResults=utf8");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Kapcsolat.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -123,7 +125,7 @@ public class Kapcsolat {
             }
             while (rs.next()) {
                 DataEgybentartas cpvEgybentartas
-                        = new DataEgybentartas((String) rs.getObject(1), rs.getObject(2).toString());
+                        = new DataEgybentartas(rs.getObject(1).toString(), rs.getObject(2).toString());
                 data.add(cpvEgybentartas);
             }
         } catch (SQLException ex) {

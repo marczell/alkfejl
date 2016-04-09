@@ -38,7 +38,7 @@
             <Label layoutX="72.0" layoutY="134.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Új elem rögzítése" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="110.0" />
             <Label layoutX="72.0" layoutY="184.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Értéklista" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="150.0" />
             <Label layoutX="367.0" layoutY="184.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Új elem" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="150.0" />
-            <TextField fx:id="UjErtek" layoutX="527.0" layoutY="180.0" prefWidth="200.0" AnchorPane.leftAnchor="490.0" AnchorPane.topAnchor="145.0" />
+            <TextField fx:id="UjErtek" layoutX="527.0" layoutY="180.0" prefWidth="200.0" AnchorPane.leftAnchor="540.0" AnchorPane.topAnchor="145.0" />
             <Label layoutX="88.0" layoutY="428.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Kapcsolattartó adatai" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="310.0" />
             <Label layoutX="92.0" layoutY="463.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Értéklista" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="350.0" />
             <Label layoutX="392.0" layoutY="465.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Inaktiválandó elem" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="350.0" />
@@ -56,7 +56,7 @@
             </Button>
             <ChoiceBox fx:id="ErtekLista1" layoutX="173.0" layoutY="149.0" prefWidth="200.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="145.0" />
             <ChoiceBox fx:id="ErtekLista2" layoutX="231.0" layoutY="347.0" onMouseClicked="#listaKivalasztasAction" onMouseReleased="#listaKivalasztasAction" onScrollFinished="#listaKivalasztasAction" prefWidth="200.0" AnchorPane.leftAnchor="161.0" AnchorPane.topAnchor="345.0" />
-            <ChoiceBox fx:id="OsszesErtek" layoutX="172.0" layoutY="356.0" prefWidth="200.0" AnchorPane.leftAnchor="520.0" AnchorPane.topAnchor="345.0" />
+            <ChoiceBox fx:id="OsszesErtek" layoutX="172.0" layoutY="356.0" prefWidth="200.0" AnchorPane.leftAnchor="540.0" AnchorPane.topAnchor="345.0" />
             <Line endX="650.0" layoutX="102.0" layoutY="312.0" startX="-50.0" styleClass="shape" AnchorPane.topAnchor="530.0" />
             <Label layoutX="595.0" layoutY="65.0" styleClass="textinputcontrol" stylesheets="@alkfejl.css" />
             <Label fx:id="uzenet" layoutX="326.0" layoutY="65.0" styleClass="textinputcontrol" stylesheets="@alkfejl.css" />

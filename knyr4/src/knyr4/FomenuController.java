@@ -5,6 +5,7 @@
  */
 package knyr4;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -52,6 +53,9 @@ public class FomenuController implements Initializable {
         Stage stage = (Stage) CtrlSzerzfel.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("szerzfelrogzites.fxml"));
         Scene scene = new Scene(root);
+         File f = new File("alkfejl.css");
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
         stage.setScene(scene);
         stage.show();
     }
@@ -61,6 +65,9 @@ public class FomenuController implements Initializable {
         Stage stage = (Stage) CtrlSzerzfel.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("szerzrogzites.fxml"));
         Scene scene = new Scene(root);
+         File f = new File("alkfejl.css");
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
         stage.setScene(scene);
         stage.show();
     }
@@ -70,6 +77,9 @@ public class FomenuController implements Initializable {
         Stage stage = (Stage) CtrlSzerzfel.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("CPV_egyb.fxml"));
         Scene scene = new Scene(root);
+         File f = new File("alkfejl.css");
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
         stage.setScene(scene);
         stage.show();
     }
@@ -79,6 +89,9 @@ public class FomenuController implements Initializable {
         Stage stage = (Stage) CtrlSzerzfel.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("projekt_egyb.fxml"));
         Scene scene = new Scene(root);
+         File f = new File("alkfejl.css");
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
         stage.setScene(scene);
         stage.show();
     }
@@ -88,6 +101,9 @@ public class FomenuController implements Initializable {
         Stage stage = (Stage) CtrlSzerzfel.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("kereses.fxml"));
         Scene scene = new Scene(root);
+         File f = new File("alkfejl.css");
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
         stage.setScene(scene);
         stage.show();
     }
@@ -97,6 +113,9 @@ public class FomenuController implements Initializable {
         Stage stage = (Stage) CtrlSzerzfel.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("erteklista_mod.fxml"));
         Scene scene = new Scene(root);
+         File f = new File("alkfejl.css");
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
         stage.setScene(scene);
         stage.show();
     }    

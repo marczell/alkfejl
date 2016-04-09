@@ -10,24 +10,19 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="knyr4.Cpv_egybController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="knyr4.CPV_egybController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
-        <Menu mnemonicParsing="false" text="Felhasználói fiók">
+        <Menu mnemonicParsing="false" text="Kilépés">
           <items>
             <MenuItem mnemonicParsing="false" text="Bezárás" />
             <MenuItem mnemonicParsing="false" text="Kijelentkezés" />
           </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-          </items>
-        </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../alkfejl.css" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="region" stylesheets="@../../alkfejl.css" VBox.vgrow="ALWAYS">
       <children>
             <Label layoutX="23.0" layoutY="14.0" prefHeight="48.0" prefWidth="164.0" text="KNYR RENDSZER">
                <font>
@@ -56,6 +51,7 @@
                   <Font name="Verdana" size="14.0" />
                </font>
             </Button>
+            <Label fx:id="hibaLabel" layoutX="130.0" layoutY="131.0" />
       </children>
     </AnchorPane>
   </children>

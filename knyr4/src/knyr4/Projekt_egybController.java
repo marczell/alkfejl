@@ -5,6 +5,7 @@
  */
 package knyr4;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -66,6 +67,9 @@ public class Projekt_egybController implements Initializable {
         Stage stage = (Stage) CtrlPrEgybeVissza.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("fomenu.fxml"));
         Scene scene = new Scene(root);
+        File f = new File("alkfejl.css");
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
         stage.setScene(scene);
         stage.show();
     }
