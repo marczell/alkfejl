@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="knyrrmi2.SzerzrogzitesController">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="Kilépés">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Bezárás" />
+            <MenuItem mnemonicParsing="false" text="Kijelentkezés" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="region" stylesheets="@../alkfejl.css" VBox.vgrow="ALWAYS">
+      <children>
+            <Label layoutX="23.0" layoutY="14.0" prefHeight="48.0" prefWidth="164.0" text="KNYR RENDSZER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="CtrlSzerzMentes" alignment="CENTER" contentDisplay="CENTER" layoutX="595.0" layoutY="508.0" mnemonicParsing="false" onAction="#mentesAction" prefHeight="30.0" prefWidth="100.0" styleClass="buttonbase" stylesheets="@../alkfejl.css" text="Mentés" textAlignment="CENTER" AnchorPane.leftAnchor="550.0" AnchorPane.topAnchor="520.0">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="176.0" layoutY="28.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="SZERZŐDÉS RÖGZÍTÉSE" />
+            <Label layoutX="72.0" layoutY="88.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Sorszám" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="70.0" />
+            <Label layoutX="72.0" layoutY="184.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Szerződés neve" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="120.0" />
+            <Label layoutX="72.0" layoutY="235.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Szerződő fél" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="170.0" />
+            <Label layoutX="72.0" layoutY="280.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Szerződés értéke" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="220.0" />
+            <Label layoutX="367.0" layoutY="280.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Szerződés fajtája" AnchorPane.leftAnchor="460.0" AnchorPane.topAnchor="270.0" />
+            <Label layoutX="81.0" layoutY="327.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Közbeszerzési eljárás fajtája" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="270.0" />
+            <Label layoutX="85.0" layoutY="376.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="CPV kód" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="320.0" />
+            <Label layoutX="402.0" layoutY="351.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Projekt" AnchorPane.leftAnchor="460.0" AnchorPane.topAnchor="320.0" />
+            <TextField fx:id="SzerzNevSzerz" layoutX="143.0" layoutY="180.0" prefWidth="250.0" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="115.0" />
+            <TextField fx:id="SzerzertekSzerz" layoutX="254.0" layoutY="167.0" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="215.0" />
+            <Label layoutX="72.0" layoutY="401.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Szerződéskötés dátuma" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="370.0" />
+            <Label layoutX="92.0" layoutY="513.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="Szerződés tervezett lezárása" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="420.0" />
+            <ChoiceBox fx:id="KozbeszfajtSzerz" layoutX="282.0" layoutY="269.0" prefWidth="150.0" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="265.0" />
+            <ChoiceBox fx:id="SzerzFajtSzerz" layoutX="301.0" layoutY="319.0" prefWidth="150.0" AnchorPane.leftAnchor="600.0" AnchorPane.topAnchor="265.0" />
+            <ChoiceBox fx:id="CpvSzerz" layoutX="166.0" layoutY="369.0" prefWidth="150.0" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="315.0" />
+            <ChoiceBox fx:id="ProjektSzerz" layoutX="513.0" layoutY="369.0" prefWidth="150.0" AnchorPane.leftAnchor="600.0" AnchorPane.topAnchor="315.0" />
+            <DatePicker fx:id="SzerzkotSzerz" layoutX="232.0" layoutY="406.0" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="365.0" />
+            <DatePicker fx:id="SzerzlezarSzerz" layoutX="604.0" layoutY="409.0" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="415.0" />
+            <ChoiceBox fx:id="SzerzfelSzerz" layoutX="306.0" layoutY="159.0" prefWidth="150.0" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="165.0" />
+            <Label fx:id="Sorszam" layoutX="142.0" layoutY="73.0" styleClass="textinputcontrol" stylesheets="@../alkfejl.css" text="145" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="70.0" />
+            <Button fx:id="CtrlSzerzVissza" alignment="CENTER" contentDisplay="CENTER" layoutX="661.0" layoutY="521.0" mnemonicParsing="false" onAction="#visszaAction" prefHeight="30.0" prefWidth="100.0" styleClass="buttonbase" stylesheets="@../alkfejl.css" text="Vissza" textAlignment="CENTER" AnchorPane.leftAnchor="660.0" AnchorPane.topAnchor="521.0">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+            </Button>
+            <Label fx:id="uzenet" layoutX="468.0" layoutY="30.0" prefHeight="17.0" prefWidth="250.0" styleClass="textinputcontrol" text="" textFill="RED" />
+      </children>
+    </AnchorPane>
+  </children>
+  <stylesheets>
+    <URL value="@BasicApplication.css" />
+  </stylesheets>
+</VBox>
