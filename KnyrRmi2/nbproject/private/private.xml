@@ -3,18 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Marcell/Documents/NetBeansProjects/KnyrRmi2/src/knyrrmi2/SzerzrogzitesController.java</file>
-            <file>file:/C:/Users/Marcell/Documents/NetBeansProjects/KnyrRmi2/src/model/SerializableResultSet.java</file>
-            <file>file:/C:/Users/Marcell/Documents/NetBeansProjects/KnyrRmi2/src/knyrrmi2/KnyrRmi2.java</file>
-            <file>file:/C:/Users/Marcell/Documents/NetBeansProjects/KnyrRmi2/src/knyrrmi2/Erteklista_modController.java</file>
-            <file>file:/C:/Users/Marcell/Documents/NetBeansProjects/KnyrRmi2/src/knyrrmi2/Projekt_egybController.java</file>
-            <file>file:/C:/Users/Marcell/Documents/NetBeansProjects/KnyrRmi2/src/knyrrmi2/KnyrImpl.java</file>
-            <file>file:/C:/Users/Marcell/Documents/NetBeansProjects/KnyrRmi2/src/knyrrmi2/SzerzfelrogzitesController.java</file>
-            <file>file:/C:/Users/Marcell/Documents/NetBeansProjects/KnyrRmi2/src/knyrrmi2/Server.java</file>
-            <file>file:/C:/Users/Marcell/Documents/NetBeansProjects/KnyrRmi2/src/knyrrmi2/KeresesController.java</file>
-            <file>file:/C:/Users/Marcell/Documents/NetBeansProjects/KnyrRmi2/src/knyrrmi2/CPV_egybController.java</file>
-            <file>file:/C:/Users/Marcell/Documents/NetBeansProjects/KnyrRmi2/src/knyrrmi2/KnyrInterface.java</file>
-            <file>file:/C:/Users/Marcell/Documents/NetBeansProjects/KnyrRmi2/src/knyrrmi2/Kapcsolat.java</file>
+            <file>file:/C:/Users/zsofi/Documents/GitHub/alkfejl/KnyrRmi2/src/knyrrmi2/KnyrImpl.java</file>
+            <file>file:/C:/Users/zsofi/Documents/GitHub/alkfejl/KnyrRmi2/src/knyrrmi2/Kapcsolat.java</file>
+            <file>file:/C:/Users/zsofi/Documents/GitHub/alkfejl/KnyrRmi2/src/knyrrmi2/KnyrRmi2.java</file>
+            <file>file:/C:/Users/zsofi/Documents/GitHub/alkfejl/KnyrRmi2/src/knyrrmi2/KnyrInterface.java</file>
+            <file>file:/C:/Users/zsofi/Documents/GitHub/alkfejl/KnyrRmi2/src/knyrrmi2/Server.java</file>
         </group>
     </open-files>
 </project-private>
