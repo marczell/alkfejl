@@ -75,6 +75,6 @@
     </AnchorPane>
   </children>
   <stylesheets>
-    <URL value="@../alkfejl.css" />
+    <URL value="@BasicApplication.css" />
   </stylesheets>
 </VBox>

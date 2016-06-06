@@ -162,90 +162,11 @@ public class Erteklista_modController implements Initializable {
       });
     }
     
-      
-    
-    
-    /*private void listaKivalasztasAction(ActionEvent event) {
-        //a értéklista kiválasztása
-        Object kivalasztott = ErtekLista2.getSelectionModel().getSelectedItem();
-        List<String> list2 = new ArrayList<>();
-       
-        
-        if ("CPV kód".equals(kivalasztott.toString())){
-            String sql1 = "SELECT CPVKOD FROM CPVKODOK WHERE LATHATO=TRUE";
-            try {
-                tabla = "CPVKODOK";
-                oszlop = "CPVKOD";
-                ResultSet rs = kapcsolat.adatbazisReport(sql1); 
-                while (rs.next()) {
-                    String s = rs.getString("CPVKOD");
-                    list2.add(s);
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(Erteklista_modController.class.getName()).log(Level.SEVERE, null, ex);
-                uzenet.setText("Hiba az értékkeresés során!");
-            } finally {
-                kapcsolat.closeConnection();
-            }
-        } else if ("Közbeszerzési eljárás fajta".equals(kivalasztott.toString())){
-            String sql2 = "SELECT KOZBESZERZESIELJARASFAJTAI FROM KOZBESZERZESIELJARASFAJTAI WHERE LATHATO=TRUE";
-            try { 
-                tabla = "KOZBESZERZESIELJARASFAJTAI";
-                oszlop = "KOZBESZERZESIELJARASFAJTAI";
-                ResultSet rs = kapcsolat.adatbazisReport(sql2); 
-                while (rs.next()) {
-                    String s = rs.getString("KOZBESZERZESIELJARASFAJTAI");
-                    list2.add(s);
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(Erteklista_modController.class.getName()).log(Level.SEVERE, null, ex);
-                uzenet.setText("Hiba az értékkeresés során!");
-            } finally {
-                kapcsolat.closeConnection();
-            }
-        } else if ("Projekt".equals(kivalasztott.toString())){
-            String sql3 = "SELECT PROJEKT FROM PROJEKTEK WHERE LATHATO=TRUE";
-            try {
-                tabla = "PROJEKTEK";
-                 oszlop = "PROJEKT";
-                ResultSet rs = kapcsolat.adatbazisReport(sql3); 
-                while (rs.next()) {
-                    String s = rs.getString("PROJEKT");
-                    list2.add(s);
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(Erteklista_modController.class.getName()).log(Level.SEVERE, null, ex);
-                uzenet.setText("Hiba az értékkeresés során!");
-            } finally {
-                kapcsolat.closeConnection();
-            }
-        } else {
-            String sql4 = "SELECT SZERZODESFAJTA FROM SZERZODESFAJTAI WHERE LATHATO=TRUE";
-           try {
-                tabla = "SZERZODESFAJTAI";
-                oszlop = "SZERZODESFAJTA";
-                ResultSet rs = kapcsolat.adatbazisReport(sql4); 
-                while (rs.next()) {
-                    String s = rs.getString("SZERZODESFAJTA");
-                    list2.add(s);
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(Erteklista_modController.class.getName()).log(Level.SEVERE, null, ex);
-                uzenet.setText("Hiba az értékkeresés során!");
-            } finally {
-                kapcsolat.closeConnection();
-            } 
-            
-        }
-        ObservableList obList2 = FXCollections.observableList(list2);
-        OsszesErtek.getItems().clear();
-        OsszesErtek.setItems(obList2);
-        }*/
     @FXML
      private void ertekTorlesAction(ActionEvent event) {
         //a érték lathato paraméterének false-ra állítása
         Object kivalasztottErtek = OsszesErtek.getSelectionModel().getSelectedItem();
-        String sql = "UPDATE "+tabla+" SET LATHATO=FALSE WHERE "+oszlop+" = "+kivalasztottErtek.toString();
+        String sql = "UPDATE "+tabla+" SET LATHATO=FALSE WHERE "+oszlop+" = '"+kivalasztottErtek.toString()+"'";
         try {
                 kapcsolat.adatbazisbaInsertalas(sql);
                 uzenet.setText("Sikeres mentése a " + kivalasztottErtek.toString());
